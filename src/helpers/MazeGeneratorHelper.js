@@ -39,7 +39,7 @@ function maze(x, y) {
     return ({x: x, y: y, horiz: horiz, verti: verti});
 }
 
-function display2(m) {
+function mazeRulesToTileMap(m) {
     const tilemap = [];
 
     for (var j = 0; j < m.x * 2 + 1; j++) {
@@ -64,7 +64,7 @@ function display2(m) {
         tilemap[j] = line;
     }
 
-    const trimmedTilemap = tilemap.map(row => {
+    const trimedTilemap = tilemap.map(row => {
         const newRow = [];
        row.forEach((cell, i) => {
            if (i % 2 == 0) {
@@ -73,41 +73,14 @@ function display2(m) {
        });
        return newRow
     });
-    return trimmedTilemap;
-}
-
-
-function display(m) {
-    const tilemap = [];
-    for (var j = 0; j < m.x + 1; j++) {
-        var line = [];
-        if (0 == j % 2)
-            for (var k = 0; k < m.y + 1; k++)
-                if (0 == k % 2)
-                    line[k] = 'x';
-                else if (j > 0 && m.verti[j - 1][Math.floor(k)])
-                    line[k] = ' ';
-                else
-                    line[k] = 'x';
-        else
-            for (var k = 0; k < m.y + 1; k++)
-                if (0 == k % 2)
-                    if (k > 0 && m.horiz[(j - 1)][k - 1])
-                        line[k] = ' ';
-                    else
-                        line[k] = 'x';
-                else
-                    line[k] = ' ';
-        tilemap[j] = line;
-    }
-    return tilemap;
-    //return text.join('');
+    return trimedTilemap;
 }
 
 const generateMaze = (h, v) => {
     const horizontal = h  / 2;
     const vertical = v / 2 ;
-    return display2(maze(horizontal, vertical));
+    const mazeWallRules = maze(horizontal, vertical);
+    return mazeRulesToTileMap(mazeWallRules);
 };
 
 export {
