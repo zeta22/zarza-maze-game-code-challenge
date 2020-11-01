@@ -5,15 +5,25 @@ By Gonzalo 'Zeta' Zarza
 # Game Features
 
 :heavy_check_mark: Unique real mazes generated for each level/each new game. 
+
 :heavy_check_mark: Main menu
+
 :heavy_check_mark: Difficulty selector
+
 :heavy_check_mark: Maze generated with dynamic size (by MxN tile count)
-:heavy_check_mark: Maze/tiles size is changed for each difficulty 
+
+:heavy_check_mark: Maze/tiles size is changed for each difficulty
+ 
 :heavy_check_mark: Level progression
+
 :heavy_check_mark: Restart level
+
 :heavy_check_mark: Movements count
+
 :heavy_check_mark: Win/Lost conditions
+
 :heavy_check_mark: Win/Lost pop-up messages with overlay and actions
+
 :heavy_check_mark: Style improvements to tiles     
 
 ## Run the Web App
