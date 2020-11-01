@@ -7,6 +7,25 @@ const gameTypes = {
     PAIN: 'pain',
 };
 
+const keyCodes = {
+    ARROW_LEFT: 'ArrowLeft',
+    ARROW_UP: 'ArrowUp',
+    ARROW_DOWN: 'ArrowDown',
+    ARROW_RIGHT: 'ArrowRight'
+};
+
+const gameStates = {
+    WON: 'won',
+    LOST: 'lost',
+};
+
+const tileCodes = {
+    WALL: 'x'
+};
+
 export {
-    gameTypes
+    gameTypes,
+    keyCodes,
+    gameStates,
+    tileCodes
 }

@@ -29,7 +29,7 @@ const MainMenu = () => {
 
     if (view === 'newGame') {
         return (
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+            <div className="main-menu-container">
                 <h1>NEW GAME</h1>
                 <h2>CHOOSE GAME TYPE</h2>
                 <button
@@ -74,7 +74,7 @@ const MainMenu = () => {
     }
 
     return (
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+        <div className="main-menu-container">
             <h1>CODE-CHALLENGE MAZE</h1>
             <button onClick={newGame} className="menu-button">NEW GAME</button>
             <span>By Gonzalo "Zeta" Zarza</span>

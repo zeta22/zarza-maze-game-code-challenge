@@ -3,11 +3,14 @@ import React, {useEffect, useState} from 'react';
 import Map from './Map'
 import Player from './Player';
 import Goal from './Goal';
+import LostMenu from './LostMenu';
+import WinMenu from './WinMenu';
+
+import {keyCodes, gameStates, tileCodes} from '../constants/constants';
 
 import {generateMaze} from '../helpers/MazeGeneratorHelper';
 
 const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExitGame}) => {
-
     const initialPlayerPosition = {x: 1, y: 1};
 
     const [tilesMaze, setTilesMaze] = useState(null);
@@ -53,16 +56,16 @@ const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExit
 
             let targetTileCoords;
             switch (keyPressed.key) {
-                case 'ArrowLeft':
+                case keyCodes.ARROW_LEFT:
                     targetTileCoords = {...characterPosition, x: characterPosition.x - 1};
                     break;
-                case 'ArrowRight':
+                case keyCodes.ARROW_RIGHT:
                     targetTileCoords = {...characterPosition, x: characterPosition.x + 1};
                     break;
-                case 'ArrowUp':
+                case keyCodes.ARROW_UP:
                     targetTileCoords = {...characterPosition, y: characterPosition.y - 1};
                     break;
-                case 'ArrowDown':
+                case keyCodes.ARROW_DOWN:
                     targetTileCoords = {...characterPosition, y: characterPosition.y + 1};
                     break;
                 default:
@@ -71,7 +74,7 @@ const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExit
 
             if (targetTileCoords) {
                 const targetTileType = tilesMaze[targetTileCoords.y][targetTileCoords.x];
-                const isMovementValid = targetTileType !== 'x';
+                const isMovementValid = targetTileType !== tileCodes.WALL;
 
                 if (isMovementValid) {
                     game.movementsLeft--;
@@ -82,10 +85,10 @@ const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExit
                     const playerWon = newPosition.x === game.goalPosition.x && newPosition.y === game.goalPosition.y;
 
                     if (playerWon) {
-                        levelFinished('won');
+                        levelFinished(gameStates.WON);
                     } else {
                         if (!game.movementsLeft) {
-                            levelFinished('lost');
+                            levelFinished(gameStates.LOST);
                         }
                     }
                 }
@@ -103,7 +106,7 @@ const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExit
         onExitGame()
     };
 
-    const nextLevel = () => {
+    const goToNextLevel = () => {
         onLevelFinished();
     };
 
@@ -119,76 +122,9 @@ const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExit
         return <div>Loading</div>
     }
 
-    const renderLostMenu = () => {
-        return (
-            <>
-                <div style={{
-                    backgroundColor: 'black',
-                    opacity: '0.5',
-                    width: '100%',
-                    height: '100%',
-                    position: 'absolute',
-                    top: 0
-                }}/>
-                <div style={{
-                    display: 'flex',
-                    width: '100%',
-                    height: '100%',
-                    position: 'absolute',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'column',
-                    top: 0
-                }}>
-                    <span style={{color: '#ff0220', fontSize: 20}}>No more moves!</span>
-                    <span style={{color: '#ff3448', fontSize: 42, fontWeight: 'bold'}}>Level Failed!</span>
-                    <div style={{flexDirection: 'row'}}>
-                        <button onClick={restartLevel} className="game-button">Try Again</button>
-                        <button onClick={exitGame} className="game-button">Give up</button>
-                    </div>
-                </div>
-            </>
-        );
-    };
-
-    const renderWonMenu = () => {
-
-        return (
-            <>
-                <div style={{
-                    backgroundColor: 'black',
-                    opacity: '0.5',
-                    width: '100%',
-                    height: '100%',
-                    position: 'absolute',
-                    top: 0
-                }}/>
-                <div style={{
-                    display: 'flex',
-                    width: '100%',
-                    height: '100%',
-                    position: 'absolute',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'column',
-                    top: 0
-                }}>
-                    {game.isLastLevel
-                        ? <span style={{color: '#08b90f', fontSize: 42, fontWeight: 'bold'}}>Game Cleared!</span>
-                        : <span style={{color: '#08b90f', fontSize: 42, fontWeight: 'bold'}}>Level Cleared!</span>
-                    }
-                    <div style={{flexDirection: 'row'}}>
-                        <button onClick={exitGame} className="game-button">Exit Game</button>
-                        {!game.isLastLevel && <button onClick={nextLevel} className="game-button">Next Level</button>}
-                    </div>
-                </div>
-            </>
-        );
-    };
-
     return (
         <div>
-            <div className="level-container">LEVEL: 1</div>
+            <div className="level-container">LEVEL {currentLevel + 1}</div>
             <div style={{display: 'flex', justifyContent: 'center'}}>
                 <div style={{position: 'relative'}}>
                     {tilesMaze && <Map maze={tilesMaze} cellSize={game.cellSize}/>}
@@ -197,8 +133,15 @@ const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExit
                     {game.finished &&
                     <div>
                         {game.status === 'won'
-                            ? renderWonMenu()
-                            : renderLostMenu()
+                            ? <WinMenu
+                                isLastLevel={game.isLastLevel}
+                                goToNextLevel={goToNextLevel}
+                                exitGame={exitGame}
+                            />
+                            : <LostMenu
+                                restartLevel={restartLevel}
+                                exitGame={exitGame}
+                            />
                         }
                     </div>
                     }
