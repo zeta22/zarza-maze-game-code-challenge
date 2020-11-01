@@ -140,11 +140,11 @@ const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExit
                     flexDirection: 'column',
                     top: 0
                 }}>
-                    <span style={{color: '#fff', fontSize: 20}}>No more moves!</span>
-                    <span style={{color: '#ff3448', fontSize: 40}}>Level Failed!</span>
+                    <span style={{color: '#ff0220', fontSize: 20}}>No more moves!</span>
+                    <span style={{color: '#ff3448', fontSize: 42, fontWeight: 'bold'}}>Level Failed!</span>
                     <div style={{flexDirection: 'row'}}>
-                        <button onClick={restartLevel}>Try Again</button>
-                        <button onClick={exitGame}>Give up</button>
+                        <button onClick={restartLevel} className="game-button">Try Again</button>
+                        <button onClick={exitGame} className="game-button">Give up</button>
                     </div>
                 </div>
             </>
@@ -174,12 +174,12 @@ const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExit
                     top: 0
                 }}>
                     {game.isLastLevel
-                        ? <span style={{color: '#08b90f', fontSize: 40}}>Game Cleared!</span>
-                        : <span style={{color: '#08b90f', fontSize: 40}}>Level Cleared!</span>
+                        ? <span style={{color: '#08b90f', fontSize: 42, fontWeight: 'bold'}}>Game Cleared!</span>
+                        : <span style={{color: '#08b90f', fontSize: 42, fontWeight: 'bold'}}>Level Cleared!</span>
                     }
                     <div style={{flexDirection: 'row'}}>
-                        <button onClick={exitGame}>Exit Game</button>
-                        {!game.isLastLevel && <button onClick={nextLevel}>Next Level</button>}
+                        <button onClick={exitGame} className="game-button">Exit Game</button>
+                        {!game.isLastLevel && <button onClick={nextLevel} className="game-button">Next Level</button>}
                     </div>
                 </div>
             </>
@@ -187,24 +187,27 @@ const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExit
     };
 
     return (
-        <div style={{display: 'flex', justifyContent: 'center'}}>
-            <div style={{position: 'relative'}}>
-                {tilesMaze && <Map maze={tilesMaze} cellSize={game.cellSize}/>}
-                <Player characterPosition={characterPosition} cellSize={game.cellSize}/>
-                <Goal goalPosition={game.goalPosition} cellSize={game.cellSize}/>
-                <div>
-                    Movimientos Restantes: {game.movementsLeft}
-                </div>
-                {game.finished &&
-                <div>
-                    {game.status === 'won'
-                        ? renderWonMenu()
-                        : renderLostMenu()
+        <div>
+            <div className="level-container">LEVEL: 1</div>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+                <div style={{position: 'relative'}}>
+                    {tilesMaze && <Map maze={tilesMaze} cellSize={game.cellSize}/>}
+                    <Player characterPosition={characterPosition} cellSize={game.cellSize}/>
+                    <Goal goalPosition={game.goalPosition} cellSize={game.cellSize}/>
+                    {game.finished &&
+                    <div>
+                        {game.status === 'won'
+                            ? renderWonMenu()
+                            : renderLostMenu()
+                        }
+                    </div>
                     }
+                    <button onClick={restartLevel} className="game-button">Restart</button>
+                    <button onClick={exitGame} className="game-button">Give up</button>
+                    <div className="movements-left">
+                        {game.movementsLeft}
+                    </div>
                 </div>
-                }
-                <button onClick={restartLevel}>Restart</button>
-                <button onClick={exitGame}>Give up</button>
             </div>
         </div>
     );

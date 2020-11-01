@@ -77,7 +77,6 @@ const MainMenu = () => {
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
             <h1>CODE-CHALLENGE MAZE</h1>
             <button onClick={newGame} className="menu-button">NEW GAME</button>
-            <button onClick={newGame} className="menu-button">HIGH-SCORES</button>
             <span>By Gonzalo "Zeta" Zarza</span>
             <span>Please enjoy and contract me :)</span>
         </div>
