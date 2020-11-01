@@ -15,6 +15,15 @@ const MainMenu = () => {
         setView(null);
     };
 
+    const renderFooter = () => {
+        return (
+            <>
+                <span>By Gonzalo "Zeta" Zarza</span>
+                <span>Please enjoy and contract me :)</span>
+            </>
+        )
+    };
+
     if (difficulty) {
         return (
             <Game
@@ -67,8 +76,7 @@ const MainMenu = () => {
                     className="menu-button">
                     BACK TO MAIN
                 </button>
-                <span>By Gonzalo "Zeta" Zarza</span>
-                <span>Please enjoy and contract me :)</span>
+                {renderFooter()}
             </div>
         )
     }
@@ -77,8 +85,7 @@ const MainMenu = () => {
         <div className="main-menu-container">
             <h1>CODE-CHALLENGE MAZE</h1>
             <button onClick={newGame} className="menu-button">NEW GAME</button>
-            <span>By Gonzalo "Zeta" Zarza</span>
-            <span>Please enjoy and contract me :)</span>
+            {renderFooter()}
         </div>
     )
 };
