@@ -2,6 +2,10 @@
 
 By Gonzalo 'Zeta' Zarza
 
+# DEMO
+
+Live demo deployed in: https://zarza-maze-code-challenge.herokuapp.com/ with source maps available.
+
 # Game Features
 
 :heavy_check_mark: Unique real mazes generated for each level/each new game. 
