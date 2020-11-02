@@ -1,11 +1,12 @@
 import React from 'react';
-import logo from '../../logo.svg';
+
+import goalImage from '../../assets/goal_flag.png';
 
 const Goal = ({goalPosition, cellSize}) => {
     return (
         <img
             data-testid="goal"
-            src={logo}
+            src={goalImage}
             width={cellSize}
             height={cellSize}
             className="App-logo"

@@ -23,7 +23,14 @@ const tileCodes = {
     WALL: 'x'
 };
 
+const skins = {
+    MARIO: 'mario',
+    ZELDA: 'zelda',
+    POKEMON: 'pokemon'
+};
+
 export {
+    skins,
     gameTypes,
     keyCodes,
     gameStates,

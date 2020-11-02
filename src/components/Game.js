@@ -3,7 +3,7 @@ import GameLevel from "./GameLevel";
 
 import {getInitialGameConfigurations} from '../helpers/GameHelper';
 
-const Game = ({gameSelected, onExitGame}) => {
+const Game = ({skin, gameSelected, onExitGame}) => {
     const [gameState, setGameState] = useState({});
 
     useEffect(() => {
@@ -28,6 +28,7 @@ const Game = ({gameSelected, onExitGame}) => {
 
         return (
             <GameLevel
+                skin={skin}
                 newCurrentLevel={gameState.currentLevel}
                 initialLevelStatus={level}
                 onLevelFinished={onLevelFinished}

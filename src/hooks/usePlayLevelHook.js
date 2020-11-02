@@ -31,6 +31,7 @@ export default function usePlayLevelHook(newCurrentLevel, initialLevelStatus) {
             setTilesMaze(newMaze);
             restartLevel();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [newCurrentLevel, initialLevelStatus, currentLevel]);
 
     const levelFinished = (finishStatus) => {
@@ -85,6 +86,7 @@ export default function usePlayLevelHook(newCurrentLevel, initialLevelStatus) {
                 }
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [keyPressed]);
 
     const restartLevel = () => {

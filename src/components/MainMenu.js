@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
 import Game from "./Game";
 
-import {gameTypes} from '../constants/constants';
+import {gameTypes, skins} from '../constants/constants';
+
+import ashImage from '../assets/player_ash.png';
+import linkImage from '../assets/player_link.png';
+import marioImage from '../assets/player_mario.png';
 
 const MainMenu = () => {
     const [view, setView] = useState(null);
     const [difficulty, setDifficulty] = useState(null);
+    const [skin, setSkin] = useState(null);
 
     const newGame = () => {
         setView('newGame');
@@ -13,28 +18,82 @@ const MainMenu = () => {
 
     const backToMain = () => {
         setView(null);
+        setDifficulty(null);
+        setSkin(null);
     };
 
     const renderFooter = () => {
         return (
             <>
                 <span>By Gonzalo "Zeta" Zarza</span>
-                <span>Please enjoy and contract me :)</span>
+                <span>Please enjoy ... and hire me :)</span>
             </>
         )
     };
 
-    if (difficulty) {
+    if (difficulty && skin) {
         return (
             <Game
-                gameSelected={difficulty}
                 data-testid="game"
+                gameSelected={difficulty}
+                skin={skin}
                 onExitGame={() => {
                     setView(null);
-                    setDifficulty(null)
+                    setDifficulty(null);
+                    setSkin(null);
                 }}
             />
         )
+    }
+
+    if (difficulty) {
+        return (
+            <div className="main-menu-container" data-testid="main-menu-container">
+                <h1>NEW GAME</h1>
+                <h2>CHOOSE YOUR CHARACTER</h2>
+                <div className="characters-container">
+                    <div
+                        onClick={() => setSkin(skins.POKEMON)}
+                        className="character-container"
+                    >
+                        <img
+                            src={ashImage}
+                            width={50}
+                            height={50}
+                            alt="character"
+                        />
+                    </div>
+                    <div
+                        onClick={() => setSkin(skins.ZELDA)}
+                        className="character-container"
+                    >
+                        <img
+                            src={linkImage}
+                            width={50}
+                            height={50}
+                            alt="character"
+                        />
+                    </div>
+                    <div
+                        onClick={() => setSkin(skins.MARIO)}
+                        className="character-container"
+                    >
+                        <img
+                            onClick={() => setSkin(skins.MARIO)}
+                            src={marioImage}
+                            width={50}
+                            height={50}
+                            alt="character"
+                        />
+                    </div>
+                </div>
+                <button
+                    onClick={backToMain}
+                    className="menu-button">
+                    BACK TO MAIN
+                </button>
+            </div>
+        );
     }
 
     if (view === 'newGame') {

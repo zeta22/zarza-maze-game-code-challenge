@@ -1,5 +1,4 @@
 
-
 .main-menu-container {
   display: flex;
   justify-content: center;
@@ -24,4 +23,20 @@
   }
 }
 
+.characters-container {
+  display: flex;
+  flex-direction: row;
 
+  .character-container {
+    margin: 15px;
+    padding: 20px;
+    border: 2px solid violet;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f9dadf;
+      color: #000;
+    }
+  }
+}

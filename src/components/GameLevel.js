@@ -10,7 +10,7 @@ import usePlayLevelHook from '../hooks/usePlayLevelHook';
 
 import {gameStates} from '../constants/constants';
 
-const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExitGame}) => {
+const GameLevel = ({skin, newCurrentLevel, initialLevelStatus, onLevelFinished, onExitGame}) => {
 
     const {
         game,
@@ -29,8 +29,8 @@ const GameLevel = ({newCurrentLevel, initialLevelStatus, onLevelFinished, onExit
             <div className="level-container">LEVEL {currentLevel + 1}</div>
             <div style={{display: 'flex', justifyContent: 'center'}}>
                 <div style={{position: 'relative'}}>
-                    {tilesMaze && <Map maze={tilesMaze} cellSize={game.cellSize}/>}
-                    <Player characterPosition={characterPosition} cellSize={game.cellSize}/>
+                    {tilesMaze && <Map maze={tilesMaze} cellSize={game.cellSize} skin={skin}/>}
+                    <Player characterPosition={characterPosition} cellSize={game.cellSize} skin={skin}/>
                     <Goal goalPosition={game.goalPosition} cellSize={game.cellSize}/>
                     {game.finished &&
                     <div>
