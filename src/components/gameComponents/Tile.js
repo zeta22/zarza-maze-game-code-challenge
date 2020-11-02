@@ -27,7 +27,7 @@ const Tile = ({tile, size, skin}) => {
                 setIsWall(true);
                 break;
             default:
-                throw Error('Detected a problem generating the tile map!');
+                return;
         }
     }, [tile]);
 
@@ -46,7 +46,7 @@ const Tile = ({tile, size, skin}) => {
                 setPathImage(marioPathImage);
                 break;
             default:
-                throw Error('Detected a problem generating the tile map!');
+                return;
         }
     }, [skin]);
 

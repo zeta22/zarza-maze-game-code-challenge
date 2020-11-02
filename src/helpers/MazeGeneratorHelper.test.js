@@ -11,7 +11,6 @@ describe('GameHelper getInitialGameConfigurations by GameType', () => {
         // Acta
         const result = generateMaze(mazeSize, mazeSize);
 
-        console.log(result);
         // Assert
         expect(result).toHaveLength(mazeLength);
         expect(result[0]).toHaveLength(mazeLength);
