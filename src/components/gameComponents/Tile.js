@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
-import wallImage from '../assets/tile_stone.png';
-import pathImage from '../assets/tile_grass.png';
+import wallImage from '../../assets/tile_stone.png';
+import pathImage from '../../assets/tile_grass.png';
 
 const Tile = ({tile, size}) => {
     const [tileColor, setTileColor] = useState('white');

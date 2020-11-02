@@ -33,7 +33,6 @@ export default function usePlayLevelHook(newCurrentLevel, initialLevelStatus) {
         }
     }, [newCurrentLevel, initialLevelStatus, currentLevel]);
 
-
     const levelFinished = (finishStatus) => {
         game.status = finishStatus;
         game.finished = true;

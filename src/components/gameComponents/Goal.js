@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from '../logo.svg';
+import logo from '../../logo.svg';
 
-const Player = ({characterPosition, cellSize}) => {
+const Goal = ({goalPosition, cellSize}) => {
     return (
         <img
+            data-testid="goal"
             src={logo}
             width={cellSize}
             height={cellSize}
@@ -11,10 +12,10 @@ const Player = ({characterPosition, cellSize}) => {
             alt="logo"
             style={{
                 position: 'absolute',
-                top: characterPosition.y * cellSize,
-                left: characterPosition.x * cellSize
+                top: goalPosition.y * cellSize,
+                left: goalPosition.x * cellSize
             }}/>
     );
 };
 
-export default Player;
+export default Goal;

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Map = ({cellSize, maze}) => {
     return (
-        <div>
+        <div data-testid="map">
             {maze.map((tileRow, i) => {
                 return (
                     <div key={i} className="tile-row" style={{height: cellSize}}>

@@ -105,7 +105,7 @@ function getInitialGameConfigurations(gameType) {
 
             initalLevelStatus.cellSize = 20;
             initalLevelStatus.mazeSize = mazeSize;
-            initalLevelStatus.movementsLeft = 250;
+            initalLevelStatus.movementsLeft = 315;
             initalLevelStatus.goalPosition = {
                 x: mazeSize - 1,
                 y: mazeSize - 1

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Map from './Map'
-import Player from './Player';
-import Goal from './Goal';
-import LostMenu from './LostMenu';
-import WinMenu from './WinMenu';
+import Map from './gameComponents/Map'
+import Player from './gameComponents/Player';
+import Goal from './gameComponents/Goal';
+import LostMenu from './popUps/LostMenu';
+import WinMenu from './popUps/WinMenu';
 
 import usePlayLevelHook from '../hooks/usePlayLevelHook';
 

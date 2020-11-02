@@ -1,10 +1,12 @@
-# Maze Game - Code Challenge
+# :video_game: Maze Game - Code Challenge :video_game:
 
 By Gonzalo 'Zeta' Zarza
 
 # DEMO
 
 Live demo deployed in: https://zarza-maze-code-challenge.herokuapp.com/ with source maps available.
+
+Note: It's hosted on a Heroku free dyno. With a first request it takes a while to wake up the server! 
 
 # Game Features
 

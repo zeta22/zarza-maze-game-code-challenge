@@ -28,6 +28,7 @@ const MainMenu = () => {
         return (
             <Game
                 gameSelected={difficulty}
+                data-testid="game"
                 onExitGame={() => {
                     setView(null);
                     setDifficulty(null)
@@ -38,12 +39,14 @@ const MainMenu = () => {
 
     if (view === 'newGame') {
         return (
-            <div className="main-menu-container">
+            <div className="main-menu-container" data-testid="main-menu-container">
                 <h1>NEW GAME</h1>
                 <h2>CHOOSE GAME TYPE</h2>
                 <button
                     onClick={() => setDifficulty(gameTypes.PIECE_OF_CAKE)}
-                    className="menu-button">
+                    className="menu-button"
+                    data-testid="piece-of-cake-difficulty"
+                >
                     Piece of cake (1 level | 5x5)
                 </button>
                 <button
