@@ -16,6 +16,10 @@ Note: It's hosted on a Heroku free dyno. With a first request it takes a while t
 
 :heavy_check_mark: Difficulty selector
 
+:heavy_check_mark: Character selector
+
+:heavy_check_mark: Maze Skin changes depending on Character
+
 :heavy_check_mark: Maze generated with dynamic size (by MxN tile count)
 
 :heavy_check_mark: Maze/tiles size is changed for each difficulty
@@ -28,9 +32,7 @@ Note: It's hosted on a Heroku free dyno. With a first request it takes a while t
 
 :heavy_check_mark: Win/Lost conditions
 
-:heavy_check_mark: Win/Lost pop-up messages with overlay and actions
-
-:heavy_check_mark: Style improvements to tiles     
+:heavy_check_mark: Win/Lost pop-up messages with overlay and actions   
 
 ## Run the Web App
 
