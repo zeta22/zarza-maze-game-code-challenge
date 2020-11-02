@@ -1,0 +1,36 @@
+.transparent-overlay {
+  background-color: black;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.game-finish-pop-up-menu {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 0
+}
+
+.lost-no-moves-text {
+  color: #ff0220;
+  font-size: 20px;
+}
+
+.lost-level-failed-text {
+  color: #ff3448;
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.win-level-text {
+  color: #08b90f;
+  font-size: 42px;
+  font-weight: bold;
+}
