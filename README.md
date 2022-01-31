@@ -6,7 +6,7 @@ By Gonzalo 'Zeta' Zarza
 
 Live demo deployed in: https://zarza-maze-code-challenge.herokuapp.com/ with source maps available.
 
-Note: It's hosted on a Heroku free dyno. Could take a white to perform a first load as it has to wake up the service! 
+Note: It's hosted on a Heroku free dyno. Could take a while to perform a first load as it has to wake up the service! 
 
 # Game Features
 
